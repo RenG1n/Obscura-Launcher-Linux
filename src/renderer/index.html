@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111315" />
+  <title>Obscura — Minecraft Launcher</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://cdn.modrinth.com; connect-src 'none'; base-uri 'none'; form-action 'none'" />
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="brand-copy">
+          <div class="brand-name">OBSCURA</div>
+          <div class="brand-caption">MINECRAFT CLIENT</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Главная навигация">
+        <button class="nav-item active" data-page="home" title="Главная"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span><span>Главная</span><span class="nav-indicator"></span></button>
+        <button class="nav-item" data-page="instances" title="Сборки"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span><span>Сборки</span></button>
+        <button class="nav-item" data-page="news" title="Новости"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></span><span>Новости</span></button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-section-label">PREFERENCES</div>
+      <button class="nav-item" data-page="settings" title="Настройки"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.1 1.8-1.8 3.1-2.1-.5a8 8 0 0 1-1.7 1l-.6 2.1h-3.6l-.6-2.1a8 8 0 0 1-1.7-1l-2.1.5-1.8-3.1L5.7 15a8 8 0 0 1 0-2l-1.1-1.8 1.8-3.1 2.1.5a8 8 0 0 1 1.7-1l.6-2.1h3.6l.6 2.1a8 8 0 0 1 1.7 1l2.1-.5 1.8 3.1-1.1 1.8a8 8 0 0 1-.1 2Z" transform="translate(-1 -1) scale(1.08)"/></svg></span><span>Настройки</span></button>
+
+      <div class="sidebar-bottom">
+        <div class="status-line"><span class="status-dot"></span><span>Все системы работают</span></div>
+        <div class="profile-card">
+          <div class="avatar" id="avatarLetter">?</div>
+          <div class="profile-meta"><strong id="profileName">Гость</strong><span id="profileStatus">Не выполнен вход</span></div>
+          <button class="icon-button small" id="accountButton" title="Войти через Microsoft" aria-label="Аккаунт Microsoft">•••</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>OBSCURA</span><span class="crumb-slash">/</span><strong id="pageCrumb">Главная</strong></div>
+        <div class="topbar-actions">
+          <span class="build-tag"><span class="tiny-dot"></span> <span id="buildTag">Release 1.1.0</span></span>
+          <button class="icon-button" id="minimizeHint" aria-label="Информация" title="О лаунчере">i</button>
+        </div>
+      </header>
+
+      <section class="page page-home active" id="page-home">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT WORLD AWAITS</div>
+            <h1>Время играть<span class="title-period">.</span></h1>
+            <p class="intro">Твой мир. Твои правила. Ничего лишнего.</p>
+          </div>
+          <div class="edition-label"><span class="edition-icon">◆</span><div><strong>JAVA EDITION</strong><span>Desktop launcher</span></div></div>
+        </div>
+
+        <div class="hero-card" id="heroCard">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-kicker"><span class="live-dot"></span> READY WHEN YOU ARE</div>
+            <div class="hero-title">С возвращением<br /><em>в Minecraft.</em></div>
+            <p class="hero-description">Продолжи своё приключение или создай новый мир.</p>
+            <div class="hero-actions">
+              <button class="primary-button" id="playButton"><span class="play-triangle">▶</span><span id="playLabel">Запустить игру</span><span class="button-arrow">↗</span></button>
+              <button class="icon-button" id="openModsFolderButton" title="Открыть папку модов" aria-label="Открыть папку модов">🧩</button>
+              <button class="icon-button" id="openGameFolderButton" title="Открыть папку с игрой" aria-label="Открыть папку с игрой">📁</button>
+              <button class="secondary-button" id="changeBackgroundButton"><span>▧</span> Изменить фон</button>
+              <button class="secondary-button" id="cancelButton" hidden>Отмена</button>
+              <div class="visual-group" id="visualGroup">
+                <button class="icon-button" id="openVisualModsButton" title="Открыть папку модов визуального мода" aria-label="Открыть папку модов визуального мода" hidden>🧩</button>
+                <label class="switch visual-switch" id="visualSwitch" title="Визуальный мод: Minecraft 1.21.11 + Fabric, отдельная папка. Версию и загрузчик в этом режиме менять нельзя.">
+                  <span class="visual-switch-text"><strong>Визуальный мод</strong><small id="visualSwitchNote">1.21.11 · Fabric</small></span>
+                  <input type="checkbox" id="visualToggle" role="switch" aria-label="Включить визуальный мод" /><span class="switch-track"></span>
+                </label>
+              </div>
+            </div>
+            <div class="launch-progress" id="launchProgress" hidden>
+              <div class="launch-progress-text" id="launchProgressText"></div>
+              <div class="launch-progress-track"><div class="launch-progress-bar" id="launchProgressBar"></div></div>
+            </div>
+          </div>
+          <div class="hero-footer"><span><span class="footer-square"></span> MINECRAFT JAVA</span><span id="backgroundName">BACKGROUND 01</span></div>
+        </div>
+
+        <div class="section-heading">
+          <div><div class="eyebrow">QUICK CONFIGURATION</div><h2>Перед запуском</h2></div>
+          <span class="section-note">Настройки сохраняются на этом компьютере</span>
+        </div>
+
+        <div class="config-grid">
+          <article class="config-card version-card">
+            <div class="card-topline"><span class="card-icon">▣</span><span class="card-label">ВЕРСИЯ ИГРЫ</span><span class="card-status" id="versionCardStatus">JAVA</span></div>
+            <label for="versionSelect">Версия Minecraft</label>
+            <div class="select-wrap"><select id="versionSelect">
+              <option value="release">Последний релиз</option>
+              <option value="1.21.8">1.21.8</option>
+              <option value="1.21.5">1.21.5</option>
+              <option value="1.20.4">1.20.4</option>
+              <option value="1.19.4">1.19.4</option>
+              <option value="snapshot">Последний snapshot</option>
+            </select><span class="select-chevron">⌄</span></div>
+            <div class="loader-block">
+              <label for="loaderSelect">Загрузчик модов</label>
+              <div class="select-wrap"><select id="loaderSelect" aria-label="Загрузчик модов">
+                <option value="vanilla">Без модов (Vanilla)</option>
+                <option value="fabric">Fabric</option>
+                <option value="forge">Forge</option>
+                <option value="quilt">Quilt</option>
+                <option value="neoforge">NeoForge</option>
+              </select><span class="select-chevron">⌄</span></div>
+              <div class="select-wrap loader-version" id="loaderVersionWrap" hidden><select id="loaderVersionSelect" aria-label="Версия загрузчика"><option value="">Авто</option></select><span class="select-chevron">⌄</span></div>
+            </div>
+            <div class="card-footnote"><span class="mini-status"></span><span id="versionNote">Список версий загружается…</span></div>
+          </article>
+
+          <article class="config-card ram-card">
+            <div class="card-topline"><span class="card-icon">▤</span><span class="card-label">ПАМЯТЬ JAVA</span><span class="card-status">RAM</span></div>
+            <div class="ram-value-row"><label for="ramRange">Выделить оперативную память</label><strong><span id="ramValue">4</span><small> GB</small></strong></div>
+            <input id="ramRange" class="ram-range" type="range" min="2" max="16" step="1" value="4" />
+            <div class="range-labels"><span>2 GB</span><span>16 GB</span></div>
+            <div class="card-footnote"><span class="mini-status"></span><span id="ramNote">Лимит проверяется по памяти этого компьютера</span></div>
+          </article>
+
+          <article class="config-card profile-config-card">
+            <div class="card-topline"><span class="card-icon">◈</span><span class="card-label">ПРОФИЛЬ</span><span class="card-status">LOCAL</span></div>
+            <label for="profileSelect">Игровой профиль</label>
+            <div class="select-wrap"><select id="profileSelect" aria-label="Выбрать игровой аккаунт"><option value="local">Локальный профиль — ОФЛАЙН</option></select><span class="select-chevron">⌄</span></div>
+            <div class="card-footnote"><span class="mini-status"></span><span>Выбери аккаунт для запуска: Microsoft — с лицензией, локальный — без лицензии.</span></div>
+          </article>
+        </div>
+
+        <div class="bottom-strip">
+          <div class="bottom-item"><span class="bottom-icon">⌘</span><div><strong>Чистый интерфейс</strong><span>Ничего лишнего на экране</span></div></div>
+          <div class="bottom-divider"></div>
+          <div class="bottom-item"><span class="bottom-icon">◷</span><div><strong>Быстрый доступ</strong><span>Основные настройки под рукой</span></div></div>
+          <div class="bottom-divider"></div>
+          <div class="bottom-item"><span class="bottom-icon">◇</span><div><strong>Твой стиль</strong><span>Фон можно заменить в один клик</span></div></div>
+        </div>
+      </section>
+
+      <section class="page placeholder-page" id="page-instances">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR LIBRARY</div><h1>Сборки<span class="title-period">.</span></h1>
+        <p class="intro">Отдельные профили: у каждой сборки свои моды, сейвы и настройки.</p>
+        <div class="builds-toolbar"><button class="secondary-button" id="importPackButton">⬇ Импорт модпака</button><button class="secondary-button" id="newBuildButton">+ Новая сборка</button></div>
+        <div class="config-card" id="importPackForm" hidden>
+          <label for="importPackUrl">Ссылка на модпак (страница на modrinth.com или прямая ссылка на .mrpack)</label>
+          <input id="importPackUrl" placeholder="https://modrinth.com/modpack/..." autocomplete="off" />
+          <div class="builds-form-actions"><button class="primary-button" id="importPackUrlButton">Импортировать по ссылке</button><button class="secondary-button" id="importPackFileButton">Выбрать файл .mrpack…</button><button class="secondary-button" id="importPackCancelButton">Отмена</button></div>
+        </div>
+        <div class="config-card" id="newBuildForm" hidden>
+          <label for="newBuildName">Название</label>
+          <input id="newBuildName" maxlength="48" placeholder="Моя сборка" autocomplete="off" />
+          <label for="newBuildVersion" class="build-form-label">Версия Minecraft</label>
+          <div class="select-wrap"><select id="newBuildVersion" aria-label="Версия Minecraft"></select></div>
+          <label for="newBuildLoader" class="build-form-label">Загрузчик модов</label>
+          <div class="select-wrap"><select id="newBuildLoader" aria-label="Загрузчик модов">
+            <option value="vanilla">Без модов</option>
+            <option value="fabric">Fabric</option>
+            <option value="forge">Forge</option>
+            <option value="quilt">Quilt</option>
+            <option value="neoforge">NeoForge</option>
+          </select></div>
+          <div class="builds-form-actions"><button class="primary-button" id="createBuildButton">Создать</button><button class="secondary-button" id="cancelBuildButton">Отмена</button></div>
+        </div>
+        <div class="builds-list" id="buildsList"></div>
+        <div class="empty-state" id="buildsEmptyState"><div class="empty-mark">▦</div><h2>Сборок пока нет</h2><p>Создай первую сборку — у неё будут свои моды, сейвы и настройки, отдельные от основной игры.</p></div>
+      </section>
+
+      <section class="page placeholder-page" id="page-news">
+        <div class="eyebrow"><span class="eyebrow-line"></span> WHAT'S NEW</div><h1>Новости<span class="title-period">.</span></h1>
+        <p class="intro">Что изменилось в лаунчере и какие ошибки исправлены.</p>
+        <div class="news-list" id="newsList"></div>
+      </section>
+
+      <section class="page placeholder-page" id="page-settings">
+        <div class="eyebrow"><span class="eyebrow-line"></span> PERSONALIZE</div><h1>Настройки<span class="title-period">.</span></h1>
+        <p class="intro">Подстрой лаунчер под себя.</p>
+        <div class="settings-panel">
+          <div class="settings-row"><div><strong>Режим авторизации</strong><span>Microsoft — официальный вход. Локальный — ник для одиночной игры и серверов без online-mode; лицензию не предоставляет.</span></div><div class="settings-actions"><select id="authModeSelect" aria-label="Режим авторизации"><option value="microsoft">Microsoft</option><option value="local">Локальный / офлайн</option></select></div></div>
+          <div class="settings-row" id="localUsernameRow"><div><strong>Ник локального профиля</strong><span>От 3 до 16 символов: латинские буквы, цифры и подчёркивание.</span></div><div class="settings-actions"><input id="localUsernameInput" value="Player" maxlength="16" autocomplete="off" aria-label="Ник локального профиля" /><button class="secondary-button" id="saveLocalUsernameButton">Сохранить</button></div></div>
+          <div class="settings-row"><div><strong>Аккаунты Microsoft</strong><span>Добавляй несколько аккаунтов и переключай активный. Успешный вход подтверждает доступ к профилю Minecraft. Токены хранятся отдельно и шифруются средствами Windows.</span><div class="settings-actions account-management"><select id="accountSelect" aria-label="Активный аккаунт"><option value="">Нет аккаунтов</option></select><button class="secondary-button" id="addAccountButton">Добавить</button><button class="secondary-button" id="removeAccountButton">Удалить выбранный</button></div></div></div>
+          <div class="settings-row theme-row"><div><strong>Тема интерфейса</strong><span>Выбери оформление: тёмное или светлое.</span></div><div class="theme-switcher" role="group" aria-label="Тема интерфейса"><button type="button" class="theme-choice active" data-theme-choice="dark">◐ Тёмная</button><button type="button" class="theme-choice" data-theme-choice="light">☼ Светлая</button></div></div>
+          <div class="settings-row"><div><strong>Закрывать лаунчер при запуске игры</strong><span>Полностью завершает Obscura после запуска Minecraft и автоматически открывает его снова после закрытия игры. Для ожидания используется отдельный небольшой системный процесс-наблюдатель.</span></div><label class="switch" title="Закрывать лаунчер при запуске игры"><input type="checkbox" id="closeLauncherOnGameStartToggle" aria-label="Закрывать лаунчер при запуске игры" /><span class="switch-track"></span></label></div></div>
+          <div class="settings-row"><div><strong>Фон главной страницы</strong><span>Переключает встроенные варианты оформления.</span></div><button class="secondary-button" id="settingsBackgroundButton">Сменить фон</button></div>
+          <div class="settings-row"><div><strong>Своя картинка</strong><span>Подойдёт любое изображение: PNG, JPEG, WebP, GIF, BMP, AVIF, SVG. Можно перетащить файл на главную.</span></div><div class="settings-actions"><button class="secondary-button" id="pickBackgroundButton">Выбрать файл</button><button class="secondary-button" id="resetBackgroundButton">Сбросить</button></div></div>
+          <div class="customization-toggle-row"><div><strong>Дополнительные параметры кастомизации</strong><span>Настрой цвета фона, панели и кнопок вручную.</span></div><label class="check-toggle" aria-label="Показать дополнительные параметры кастомизации"><input type="checkbox" id="customizationToggle"><span class="check-box"></span></label></div>
+          <div class="customization-panel" id="customizationPanel" hidden>
+          <div class="settings-row"><div><strong>Цвет кнопок и акцентов</strong><span>Цвет основных кнопок, активных пунктов меню и иконки лаунчера.</span></div><input type="color" id="accentColorInput" value="#c8f169" aria-label="Цвет акцента" class="color-input" /></div>
+          <div class="settings-row"><div><strong>Основной фон</strong><span>Измени цвет фона всего интерфейса.</span></div><input type="color" id="baseColorInput" value="#111315" aria-label="Цвет основного фона" class="color-input" /></div>
+          <div class="settings-row"><div><strong>Фон боковой панели</strong><span>Отдельный цвет панели навигации.</span></div><input type="color" id="sidebarColorInput" value="#0d0f10" aria-label="Цвет боковой панели" class="color-input" /></div>
+          <div class="settings-row"><div><strong>Сбросить оформление</strong><span>Вернуть цвета по умолчанию для выбранной темы.</span></div><button class="secondary-button" id="resetAppearanceButton">Сбросить оформление</button></div>
+          </div>
+          <div class="settings-row java-row"><div><strong>Java</strong><span id="javaInfo">Проверяется…</span><div class="java-list" id="javaList"></div></div><span class="setting-value" id="javaBadge">…</span></div>
+          <div class="settings-row"><div><strong>Автоустановка Java</strong><span>Если для выбранной версии игры нет подходящей Java, лаунчер сам скачает её (Eclipse Temurin с adoptium.net, проверка SHA-256) в папку данных лаунчера. Работает и в установленной, и в портативной версии.</span></div><label class="switch" title="Автоустановка Java"><input type="checkbox" id="autoJavaToggle" aria-label="Автоустановка Java" /><span class="switch-track"></span></label></div>
+          <div class="settings-row errors-row"><div><strong>Журнал ошибок</strong><span id="errorSummary">Ошибок пока не было.</span><div class="error-list" id="errorList"></div></div><button class="secondary-button" id="openErrorsButton">Открыть папку</button></div>
+          <div class="settings-row"><div><strong>Версия лаунчера</strong><span>Obscura для Minecraft: Java Edition.</span></div><span class="setting-value">Release 1.1.0</span></div>
+        </div>
+      </section>
+
+      <footer class="app-footer"><span>OBSCURA <span class="footer-muted">· RELEASE 1.1.0</span></span><span>MADE FOR YOUR NEXT WORLD</span></footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="backgroundFileInput" accept="image/*" hidden />
+  <input type="file" id="mrpackFileInput" accept=".mrpack,application/zip" hidden />
+  <dialog class="mods-dialog" id="modsDialog" aria-labelledby="modsTitle">
+    <header class="mods-head">
+      <div class="mods-head-text">
+        <div class="eyebrow" id="modsEyebrow"><span class="eyebrow-line"></span> МОДЫ</div>
+        <h2 id="modsTitle">Добавить моды</h2>
+      </div>
+      <button class="icon-button" id="modsClose" type="button" aria-label="Закрыть окно" title="Закрыть">✕</button>
+    </header>
+    <div class="mods-tabs" role="tablist">
+      <button class="mods-tab active" data-tab="browse" role="tab" aria-selected="true" type="button">Каталог</button>
+      <button class="mods-tab" data-tab="installed" role="tab" aria-selected="false" type="button">Установлено <span class="mods-count" id="modsInstalledCount"></span></button>
+      <span class="mods-result-info" id="modsResultInfo"></span>
+    </div>
+    <section class="mods-browse" id="modsBrowse">
+      <div class="mods-toolbar">
+        <input id="modsSearch" type="search" maxlength="100" placeholder="Поиск модов…" autocomplete="off" aria-label="Поиск модов" />
+        <div class="select-wrap mods-sort"><select id="modsSort" aria-label="Сортировка">
+          <option value="downloads">Популярные</option>
+          <option value="relevance">По релевантности</option>
+          <option value="newest">Новые</option>
+          <option value="updated">Недавно обновлённые</option>
+          <option value="follows">По подпискам</option>
+        </select><span class="select-chevron">⌄</span></div>
+      </div>
+      <div class="mods-cats" id="modsCats" role="group" aria-label="Категории"></div>
+      <div class="mods-grid" id="modsGrid"></div>
+      <nav class="mods-pager" id="modsPager" aria-label="Страницы каталога" hidden></nav>
+    </section>
+    <section class="mods-installed" id="modsInstalled" hidden></section>
+    <footer class="mods-foot">Каталог — Modrinth. Показаны только моды для загрузчика и версии этой сборки; обязательные зависимости добавляются автоматически.</footer>
+  </dialog>
+  <dialog class="auth-dialog error-dialog" id="errorDialog" aria-labelledby="errorTitle">
+    <div class="error-badges"><span class="error-code" id="errorCode">OBS-000</span><span class="error-number" id="errorNumber">№0000</span></div>
+    <h2 id="errorTitle">Ошибка</h2>
+    <div class="error-section"><div class="error-label">ЧТО СЛУЧИЛОСЬ</div><p id="errorCause"></p></div>
+    <div class="error-section"><div class="error-label">ЧТО ДЕЛАТЬ</div><p id="errorFix"></p></div>
+    <div class="error-section" id="errorDetailBox" hidden><div class="error-label">ТЕХНИЧЕСКАЯ ПРИЧИНА</div><p class="error-detail" id="errorDetail"></p></div>
+    <p class="error-file" id="errorFile"></p>
+    <div class="auth-actions error-actions">
+      <button class="secondary-button" id="errorCopy">Копировать</button>
+      <button class="secondary-button" id="errorOpenFolder">Папка ошибок</button>
+      <button class="primary-button" id="errorClose">Закрыть</button>
+    </div>
+  </dialog>
+  <dialog class="auth-dialog" id="authDialog" aria-labelledby="authTitle">
+    <div class="eyebrow">MICROSOFT</div>
+    <h2 id="authTitle">Вход в аккаунт</h2>
+    <p id="authText">Открой страницу Microsoft и введи код. Пароль в лаунчер вводить не нужно.</p>
+    <div class="auth-code" id="authCode" aria-live="polite">—</div>
+    <div class="auth-url" id="authUrl"></div>
+    <div class="auth-actions"><button class="secondary-button" id="authCancel">Отмена</button></div>
+  </dialog>
+  <script src="./scripts/news-data.js"></script>
+  <script src="./scripts/renderer.js"></script>
+</body>
+</html>

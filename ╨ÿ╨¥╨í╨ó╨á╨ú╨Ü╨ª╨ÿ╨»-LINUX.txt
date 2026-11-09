@@ -1,0 +1,32 @@
+OBSCURA 1.1.0 — версия для LINUX
+
+Мод визуального режима (obscura-visual-2_0_0.jar) уже лежит в папке visual-mod/ и войдёт в сборку.
+
+Сборка (нужен Node.js 22+ и интернет):
+  1. unzip Obscura-Launcher-1_1_0-Linux.zip
+  2. ./build-linux.sh   (или: npm install && npm test && npm run dist:linux)
+  3. Готовые файлы в dist/: Obscura-1.1.0-linux-x64.AppImage, .deb и .tar.gz
+
+Запуск:  chmod +x dist/Obscura-*.AppImage && ./dist/Obscura-*.AppImage
+  На Ubuntu 24.04+ при ошибке sandbox:  ./Obscura-*.AppImage --no-sandbox   (или поставьте .deb)
+Запуск без сборки:  npm install && npm start
+Данные лаунчера: ~/.config/Obscura/ ; визуальный мод: ~/.config/Obscura/visual/
+При первом запуске визуального режима лаунчер докачает Fabric API (нужен интернет).
+Вход Microsoft требует gnome-keyring или KWallet; без них работает локальный профиль.
+Подробности: README.md
+
+--- Linux Mint 22 (Ubuntu 24.04) ---
+Node.js 22 в репозиториях Mint нет, поставьте так (один раз):
+  sudo apt update && sudo apt install -y curl ca-certificates
+  curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+  sudo apt install -y nodejs
+Сборка:  ./build-linux.sh
+Установка .deb (рекомендуется):  sudo apt install ./dist/Obscura-1.1.0-linux-x64.deb
+После этого лаунчер появится в меню «Игры».
+
+--- Готовые сборки одной командой ---
+1. Создайте репозиторий на GitHub, загрузите туда содержимое папки, в install.sh впишите свой OWNER/REPO.
+2. Выпустите релиз:  git tag v1.1.0 && git push --tags
+   GitHub сам соберёт .AppImage, .deb, .tar.gz и .exe и выложит их в Releases (.github/workflows/release.yml).
+3. Пользователи ставят одной командой:
+   curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | bash

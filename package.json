@@ -1,0 +1,145 @@
+{
+  "name": "obscura-launcher",
+  "productName": "Obscura",
+  "version": "1.1.0",
+  "description": "Obscura — Minecraft Java Edition launcher (Windows, Linux)",
+  "main": "src/main/main.js",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Obscura",
+    "email": "obscura@localhost"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.js",
+    "doctor": "node scripts/doctor.js",
+    "dist": "node scripts/dist.js",
+    "dist:win": "electron-builder --win nsis portable --x64",
+    "dist:win:installer": "electron-builder --win nsis --x64",
+    "dist:win:portable": "electron-builder --win portable --x64",
+    "dist:linux": "electron-builder --linux AppImage deb tar.gz --x64",
+    "dist:linux:appimage": "electron-builder --linux AppImage --x64",
+    "dist:portable": "electron-builder --win portable --x64",
+    "dist:all": "electron-builder --win nsis portable --linux AppImage deb tar.gz --x64"
+  },
+  "dependencies": {
+    "@xmcl/core": "2.15.1",
+    "@xmcl/installer": "6.1.2",
+    "prismarine-auth": "latest"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "app.obscura.launcher",
+    "productName": "Obscura",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "build/icon.ico",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": true,
+      "executableName": "Obscura Launcher"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Obscura-Setup-${version}.${ext}",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    },
+    "portable": {
+      "artifactName": "Obscura-Portable-${version}.${ext}"
+    },
+    "extraResources": [
+      {
+        "from": "visual-mod",
+        "to": "visual-mod",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "linux": {
+      "icon": "build/icons",
+      "category": "Game",
+      "executableName": "obscura-launcher",
+      "synopsis": "Minecraft Java Edition launcher",
+      "description": "Obscura — Minecraft Java Edition launcher with builds, mod loaders and a visual mod mode.",
+      "maintainer": "Obscura <obscura@localhost>",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Obscura-${version}-linux-${arch}.${ext}",
+      "desktop": {
+        "entry": {
+          "Name": "Obscura",
+          "Comment": "Minecraft Java Edition launcher",
+          "Categories": "Game;",
+          "Keywords": "minecraft;launcher;"
+        }
+      }
+    },
+    "appImage": {
+      "artifactName": "Obscura-${version}-linux-${arch}.${ext}"
+    },
+    "deb": {
+      "depends": [
+        "libgtk-3-0",
+        "libnotify4",
+        "libnss3",
+        "libxss1",
+        "libxtst6",
+        "xdg-utils",
+        "libatspi2.0-0",
+        "libuuid1",
+        "libsecret-1-0"
+      ]
+    }
+  },
+  "homepage": "https://github.com/obscura/launcher"
+}
